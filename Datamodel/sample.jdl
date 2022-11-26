@@ -1,0 +1,40 @@
+entity Employee {
+	employeeName String	
+	experience Integer
+	email String
+	phone String
+	baseLocation BaseLocation
+}
+
+enum BaseLocation{
+	Bengaluru
+	Kochi
+	Chennai
+}
+
+entity Skill{
+	name String
+	cerification Boolean
+	experience Integer
+}
+
+entity Asset{
+	assetName String
+	assetType AssetType
+}
+
+enum AssetType{
+	Laptop
+	Mouse
+	Keyboard
+	Desktop
+}
+
+relationship ManyToMany {
+	Employee{skill(name)} to Skill{employee(employeeName)}
+}
+
+relationship OneToMany {
+	Employee to Asset{employee(employeeName)}
+}
+
